@@ -1,6 +1,5 @@
-# 4.12
-# 3.45-3.30
-# 3.10
+# 2.50
+# # Ctrl + D ebuwama eka wage wachana hightlight karnna puluwan
 
 # from crypt import methods
 from distutils.log import error
@@ -75,6 +74,13 @@ def register():
         return redirect(url_for('index'))
     return render_template("register.html", user = user)
 
+@app.route('/allusers', methods =["POST","GET"])
+def allusers():
+    user = get_current_user()
+    db = getDatabase()
+    user_cursor = db.execute("select * from users")
+    allusers = user_cursor.fetchall()
+    return render_template("allusers.html", user = user, allusers = allusers)
 
 
 
