@@ -1,4 +1,4 @@
-# 2.50
+# 2.13
 # # Ctrl + D ebuwama eka wage wachana hightlight karnna puluwan
 
 # from crypt import methods
@@ -81,6 +81,17 @@ def allusers():
     user_cursor = db.execute("select * from users")
     allusers = user_cursor.fetchall()
     return render_template("allusers.html", user = user, allusers = allusers)
+
+@app.route('/promote/<int:id>',  methods = ["POST","GET"])
+def promote(id):
+    user =  get_current_user()
+    if request.method == "GET":
+        db =  getDatabase()
+        db.execute("update users set teacher = 1 where id = ?", [id])
+        db.commit()
+        return redirect(url_for('allusers'))
+    return render_template("allusers.html",  user = user)
+
 
 
 
