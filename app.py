@@ -74,6 +74,18 @@ def register():
         return redirect(url_for('index'))
     return render_template("register.html", user = user)
 
+
+@app.route('/askquestions')
+def askquestions():
+    user = get_current_user()
+    return render_template("askquestions.html", user = user)
+
+@app.route('/answerquestions')
+def answerquestions():
+    user = get_current_user()
+    return render_template("answerquestions.html", user = user)
+
+
 @app.route('/allusers', methods =["POST","GET"])
 def allusers():
     user = get_current_user()
