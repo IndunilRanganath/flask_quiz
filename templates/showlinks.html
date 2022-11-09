@@ -17,15 +17,27 @@
           <li class="nav-item">
             <a class="nav-link text-light" href="{{ url_for('login') }}">Login</a>
           </li>
-
           <li class="nav-item">
             <a class="nav-link text-light" href="{{ url_for('register') }}">Register</a>
           </li>
           {% endif %}
 
           <li class="nav-item">
+            <a class="nav-link text-light" href="{{ url_for('askquestions') }}">Ask Questions</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link text-light" href="{{ url_for('answerquestions') }}">Answer Question</a>
+          </li>
+
+
+
+
+          {% if user['admin'] == 1 %}
+          <li class="nav-item">
             <a class="nav-link text-light" href="{{ url_for('allusers') }}">allusers</a>
           </li>
+          {% endif %}
           
           {% if user %}
           <li class="nav-item">
